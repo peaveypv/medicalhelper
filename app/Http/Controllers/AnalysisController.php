@@ -29,6 +29,7 @@ class AnalysisController extends Controller
 
         if ($response->ok()) {
             $response = $response->json();
+            //dd($response);
             $data = compact('response','params');
             return view('analysis', $data);
         } else {

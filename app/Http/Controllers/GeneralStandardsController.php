@@ -26,7 +26,6 @@ class GeneralStandardsController extends Controller
                 return $responseArray;
             }
         });
-        dd($response);
         if($response) {
             $data = compact('response');
             return view('generalStandards', $data);
