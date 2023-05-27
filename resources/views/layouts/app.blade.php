@@ -15,9 +15,7 @@
 
     <!-- Scripts -->
 
-    <link href="/build/assets/app-2859f337.css" rel="stylesheet" />
-    <link href="/build/assets/app-3ea8b221.css" rel="stylesheet" />
-    <script src="/build/assets/app-d4b42df8.js"></script>
+    @vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
 
 
 </head>
@@ -34,14 +32,25 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @auth
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('upload.index') }}">{{ __('Загрузка данных') }}</a>
+                            <a class="nav-link {{ request()->routeIs('upload*') ? 'active' : '' }}" href="{{ route('upload.index') }}">{{ __('Загрузка данных') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('analysis.index') }}">{{ __('Анализ данных') }}</a>
+                            <a class="nav-link {{ request()->routeIs('analysis*') ? 'active' : '' }}" href="{{ route('analysis.index') }}">{{ __('Анализ данных') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('comparison*') ? 'active' : '' }}" href="{{ route('comparison.index') }}">{{ __('Сопоставление услуг') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('batchAssignments*') ? 'active' : '' }}" href="{{ route('batchAssignments.index') }}">{{ __('Пакетные назначения') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('generalStandards*') ? 'active' : '' }}" href="{{ route('generalStandards.index') }}">{{ __('Стандарты минздрава') }}</a>
                         </li>
                     </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

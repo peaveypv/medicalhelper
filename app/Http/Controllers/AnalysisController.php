@@ -25,7 +25,7 @@ class AnalysisController extends Controller
             'dateEnd' => 'required|date',
         ]);
 
-        $response = Http::withHeaders(['XApiKey' => 'f340bbdf-77ca-4448-bc03-092e72dd8803'])->get('https://api.zub.ru/dtl23api/GetDetailedInfo', $params);
+        $response = Http::connectTimeout(180)->withHeaders(['XApiKey' => env('API_KEY')])->get(env('API_URL').'/GetDetailedInfo', $params);
 
         if ($response->ok()) {
             $response = $response->json();

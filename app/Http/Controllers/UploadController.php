@@ -29,9 +29,9 @@ class UploadController extends Controller
 
         $file = $validated['file'];
 
-        $response = Http::withHeaders(['XApiKey' => 'f340bbdf-77ca-4448-bc03-092e72dd8803'])->attach(
+        $response = Http::connectTimeout(180)->withHeaders(['XApiKey' => env('API_KEY')])->attach(
             'attachment', file_get_contents($file), $file->getClientOriginalName()
-        )->post('https://api.zub.ru/dtl23api/UploadFile');
+        )->post(env('API_URL').'/UploadFile');
 
 
         if ($response->ok()) {

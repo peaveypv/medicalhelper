@@ -18,8 +18,15 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::post('/upload', [App\Http\Controllers\UploadController::class, 'store'])->name('upload.store');
 Route::get('/upload', [App\Http\Controllers\UploadController::class, 'index'])->name('upload.index');
+
 Route::get('/analysis', [App\Http\Controllers\AnalysisController::class, 'index'])->name('analysis.index');
 Route::post('/analysis', [App\Http\Controllers\AnalysisController::class, 'store'])->name('analysis.store');
+
+Route::get('/comparison', [App\Http\Controllers\ComparisonController::class, 'index'])->name('comparison.index');
+Route::get('/batchAssignments', [App\Http\Controllers\BatchAssignmentsController::class, 'index'])->name('batchAssignments.index');
+Route::get('/generalStandards', [App\Http\Controllers\GeneralStandardsController::class, 'index'])->name('generalStandards.index');
+
 
