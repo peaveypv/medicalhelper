@@ -18,3 +18,23 @@
 .standard-name {
     cursor: pointer;
 }
+
+.bg-success-subtle {
+    background: #d1e7dd !important;
+}
+
+.bg-body-secondary {
+    background: #d9d9d9 !important;
+}
+
+.bg-success {
+    background: #bae190 !important;
+}
+
+.bg-info {
+    background: #bdd7ee !important;
+}
+
+.bg-danger {
+    background: #f4b184 !important;
+}

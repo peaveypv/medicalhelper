@@ -83,7 +83,7 @@
                 <td class="{{ $responseData['treatmentHasStandards'] ? 'text-success' : 'text-danger' }} fw-bold">{{
                     $responseData['treatmentHasStandards'] ? 'Есть' : 'Нет' }}
                 </td>
-                <td class="@if($responseData['referralStatus'] == 'Все назначения соответствуют стандартам') {{ 'text-success' }} @elseif($responseData['referralStatus'] == 'Назначения частично соответствуют стандартам') {{ 'text-info' }} {{ 'fw-bold' }} @elseif($responseData['referralStatus'] == 'Все назначения не соответствуют стандартам') {{ 'text-danger' }} {{ 'fw-bold' }} @endif">
+                <td class="@if($responseData['referralStatus'] == 'Все назначения соответствуют стандартам') {{ 'bg-success' }} {{ 'text-white' }} @elseif($responseData['referralStatus'] == 'Назначения частично соответствуют стандартам') {{ 'bg-info' }} {{ 'fw-bold' }} @elseif($responseData['referralStatus'] == 'Все назначения не соответствуют стандартам') {{ 'bg-danger' }} {{ 'text-white' }} {{ 'fw-bold' }} @endif">
                     {{ $responseData['referralStatus'] }}
                 </td>
 
@@ -102,7 +102,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Назначение</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Назначения</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body ">
@@ -113,11 +113,11 @@
                                 <td>
                                     <table class="table table-striped table-sm" style="width: 100%">
                                     <tr><td>Присутствует в стандартах:</td><td>{{ $referral['isPresentsInStandards'] ? 'Да' : 'Нет' }}</td></tr>
+                                        @if($referral['isPresentsInStandards'])
                                     <tr><td>Тип стандарта: </td><td>{{ $referral['associatedStandard'] }}</td></tr>
                                     <tr><td>Наименование стандарта:</td><td> {{ $referral['associatedStandardsName'] }}</td></tr>
-                                    <tr><td>Идентификатор услуги из стандарта:</td><td> {{ $referral['associatedServiceId'] }}</td></tr>
                                     <tr><td>Наименование услуги из стандарта:</td><td>{{ $referral['associatedServiceName'] }}</td></tr>
-                                    <tr><td>Обязательная услуга: </td><td>{{ $referral['isServiceNecessary'] ? 'Да' : 'Нет' }}</td></tr>
+                                    <tr><td>Обязательная услуга: </td><td>{{ $referral['isServiceNecessary'] ? 'Да' : 'Нет' }}</td></tr>@endif
                                     </table>
                                 </td>
                             </tr>

@@ -29,4 +29,5 @@ Route::get('/comparison', [App\Http\Controllers\ComparisonController::class, 'in
 Route::get('/batchAssignments', [App\Http\Controllers\BatchAssignmentsController::class, 'index'])->name('batchAssignments.index');
 Route::get('/generalStandards', [App\Http\Controllers\GeneralStandardsController::class, 'index'])->name('generalStandards.index');
 
-
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+Route::post('/dashboard', [App\Http\Controllers\DashboardController::class, 'store'])->name('dashboard.store');

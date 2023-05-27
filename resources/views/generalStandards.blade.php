@@ -6,11 +6,13 @@
         @isset($response)
         @foreach($response as $standard)
         <div class="mb-5 ">
-            <div class="fs-2 fw-bold standard-name" data-bs-toggle="collapse" data-bs-target="#standart_{{md5($standard['name'])}}">{{ $standard['name'] }}</div>
+            <div class="fs-4 standard-name d-flex" data-bs-toggle="collapse" data-bs-target="#standart_{{md5($standard['name'])}}">
+                <div>{{ $standard['name'] }}</div>
+                <div class="fs-4 fw-bold ms-3">{{ $standard['mkbGroup'] }}</div>
+            </div>
 
             <div id="standart_{{md5($standard['name'])}}" class="accordion-collapse collapse">
                 <div class="fs-4">{{ $standard['purpose'] }}</div>
-                <div class="fs-4">{{ $standard['mkbGroup'] }}</div>
                 <div>{{ $standard['description'] }}</div>
                 <div>
                     <table class="table">
