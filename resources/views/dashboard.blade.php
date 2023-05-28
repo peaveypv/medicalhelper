@@ -35,7 +35,6 @@
             <select style="width:230px" class="form-select" aria-label="" name="doctorPostion">
                 <option value="">Выберите специальность</option>
                 @foreach($doctorPositions as $key => $position)
-                {{ $key }} {{ $params['doctorPostion'] }}
                 <option value="{{ $key }}" @if(isset($params) && $params['doctorPostion'] !== null && $key == $params['doctorPostion']) selected @endif>{{ $position }}</option>
                 @endforeach
             </select>
