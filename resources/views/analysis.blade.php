@@ -80,10 +80,10 @@
                         шт.</a>
 
                 </td>
-                <td class="{{ $responseData['treatmentHasStandards'] ? 'text-success' : 'text-danger' }} fw-bold">{{
+                <td class="{{ $responseData['treatmentHasStandards'] ? 'text-success' : 'text-danger' }} ">{{
                     $responseData['treatmentHasStandards'] ? 'Есть' : 'Нет' }}
                 </td>
-                <td class="@if($responseData['referralStatus'] == 'Все назначения соответствуют стандартам') {{ 'bg-success' }} {{ 'text-white' }} @elseif($responseData['referralStatus'] == 'Назначения частично соответствуют стандартам') {{ 'bg-info' }} {{ 'fw-bold' }} @elseif($responseData['referralStatus'] == 'Все назначения не соответствуют стандартам') {{ 'bg-danger' }} {{ 'text-white' }} {{ 'fw-bold' }} @endif">
+                <td class="@if($responseData['referralStatus'] == 'Все назначения соответствуют стандартам') {{ 'bg-success' }}  @elseif($responseData['referralStatus'] == 'Назначения частично соответствуют стандартам') {{ 'bg-info' }}  @elseif($responseData['referralStatus'] == 'Все назначения не соответствуют стандартам') {{ 'bg-danger' }}  @endif">
                     {{ $responseData['referralStatus'] }}
                 </td>
 

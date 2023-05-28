@@ -55,7 +55,7 @@
             <table class="table text-center">
                 <tr><td class="bg-success-subtle" colspan="5">Всего приемов: <b>{{ $response['totalTreatmentsCount'] }}</b></td></tr>
                 <tr><td colspan="4">Приемы где есть стандарты оказания помощи: <b>{{ $response['treatmentsWithStandardsCount'] }}</b></td><td class="bg-body-secondary">Приемы для которых нет стандарта: <b>{{ $response['treatmentsWithoutStandardsCount'] }}</b></td></tr>
-                <tr><td class="bg-success text-white">Все назначения соответсвуют стандарту: <b>{{ $response['treatmentsStatusAllInStandards'] }}</b></td><td class="bg-info fw-bold">Назначения частично соответствуют стандарту: <b>{{ $response['treatmentsStatusPartlyInStandards'] }}</b></td><td class="bg-danger text-white">Все назначения не соответсвуют стандарту: <b>{{ $response['treatmentsStatusNoneInStandards'] }}</b></td><td>Нет назначения: <b>{{ $response['treatmentsStatusHasNoReferrals'] }}</b></td><td></td></tr>
+                <tr><td class="bg-success ">Все назначения соответсвуют стандарту: <b>{{ $response['treatmentsStatusAllInStandards'] }}</b></td><td class="bg-info">Назначения частично соответствуют стандарту: <b>{{ $response['treatmentsStatusPartlyInStandards'] }}</b></td><td class="bg-danger">Все назначения не соответсвуют стандарту: <b>{{ $response['treatmentsStatusNoneInStandards'] }}</b></td><td>Нет назначения: <b>{{ $response['treatmentsStatusHasNoReferrals'] }}</b></td><td></td></tr>
             </table>
             @if($response['totalTreatmentsCount'])
             <div class="d-flex justify-content-center">
@@ -79,9 +79,9 @@
                             label: 'Приемы',
                             data: [{{ $response['treatmentsStatusNoneInStandards'] }}, {{ $response['treatmentsStatusAllInStandards'] }}, {{ $response['treatmentsStatusPartlyInStandards'] }}, {{ $response['treatmentsWithoutStandardsCount'] }}],
                 backgroundColor: [
-                    '#f4b184',
-                    '#bae190',
-                    '#bdd7ee',
+                    '#ffc09f',
+                    '#adf7b6',
+                    '#ffee93',
                     '#d9d9d9'
                 ],
                     hoverOffset: 4
@@ -98,7 +98,7 @@
             <table class="table text-center">
                 <tr><td class="bg-success-subtle" colspan="5">Всего назначений: <b>{{ $response['totalReferralsCount'] }}</b></td></tr>
                 <tr><td colspan="4">Назначения со стандартами: <b>{{ $response['referralsCountWithStandards'] }}</b></td><td class="bg-body-secondary">Назначения без стандарта: <b>{{ $response['referralsCountWithoutStandards'] }}</b></td></tr>
-                <tr><td class="bg-success text-white">Назначения в приемах сопоставленные со стандартами, кол-во, обязательные: <b>{{ $response['referralsHasComparedNecessary'] }}</b></td><td class="bg-info fw-bold">Назначения в приемах сопоставленные со стандартами, кол-во, по назначению: <b>{{ $response['referralsHasComparedOptional'] }}</b></td><td class="bg-danger text-white">Назначения в приемах сопоставленных со стандартами, кол-во, не входит в стандарт: <b>{{ $response['referralsOutsideStandards'] }}</b></td><td></td><td></td></tr>
+                <tr><td class="bg-success">Назначения в приемах сопоставленные со стандартами, кол-во, обязательные: <b>{{ $response['referralsHasComparedNecessary'] }}</b></td><td class="bg-info">Назначения в приемах сопоставленные со стандартами, кол-во, по назначению: <b>{{ $response['referralsHasComparedOptional'] }}</b></td><td class="bg-danger">Назначения в приемах сопоставленных со стандартами, кол-во, не входит в стандарт: <b>{{ $response['referralsOutsideStandards'] }}</b></td><td></td><td></td></tr>
             </table>
             @if($response['totalReferralsCount'])
             <div class="d-flex justify-content-center">
@@ -114,15 +114,17 @@
                         labels: [
                             'Назначения в приемах сопоставленных со стандартами, кол-во, не входит в стандарт',
                             'Назначения в приемах сопоставленные со стандартами, кол-во, обязательные',
-                            'Назначения в приемах сопоставленные со стандартами, кол-во, по назначению'
+                            'Назначения в приемах сопоставленные со стандартами, кол-во, по назначению',
+                            'Назначения без стандарта'
                         ],
                         datasets: [{
                             label: 'Назначения',
-                            data: [{{ $response['referralsOutsideStandards'] }}, {{ $response['referralsHasComparedNecessary'] }}, {{ $response['referralsHasComparedOptional'] }}],
+                            data: [{{ $response['referralsOutsideStandards'] }}, {{ $response['referralsHasComparedNecessary'] }}, {{ $response['referralsHasComparedOptional'] }}, {{ $response['referralsCountWithoutStandards'] }}],
                             backgroundColor: [
-                                '#f4b184',
-                                '#bae190',
-                                '#bdd7ee',
+                                '#ffc09f',
+                                '#adf7b6',
+                                '#ffee93',
+                                '#d9d9d9'
                             ],
                             hoverOffset: 4
                         }]
