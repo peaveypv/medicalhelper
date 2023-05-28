@@ -52,6 +52,7 @@ class DashboardController extends Controller
         if ($response->ok()) {
             $response = $response->json();
 
+
             $codes = Http::connectTimeout(180)->withHeaders(['XApiKey' => env('API_KEY')])->get(env('API_URL').'/GetMkbCodes');
 
             $diseaseCodes = [];
@@ -67,7 +68,6 @@ class DashboardController extends Controller
             if ($positions->ok()) {
                 $doctorPositions = $positions->json();
             }
-
 
             $data = compact('response','params', 'diseaseCodes', 'doctorPositions');
             return view('dashboard', $data);
