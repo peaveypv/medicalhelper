@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="p-3">
+<div class="p-3 pt-5">
     <div class="row justify-content-center">
 
         @isset($response)
@@ -50,9 +50,8 @@
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
-                <!--                    <th>Идентификатор записи</th>-->
-                <th>Пол пациента</th>
-                <th>Дата рождения пациента</th>
+                <th>Пол</th>
+                <th nowrap="">Дата рождения</th>
                 <th nowrap>ID пациента</th>
                 <th nowrap>Код МКБ-10</th>
                 <th>Диагноз</th>
@@ -61,9 +60,9 @@
                 <th>Назначения</th>
                 <th nowrap>Стандарт помощи</th>
                 <th>Статус</th>
-                <!--                    <th>Дата и время загрузки данных в БД</th>-->
             </tr>
             </thead>
+
             <tbody>
 
             @foreach($response as $responseData)
@@ -93,6 +92,20 @@
 
 
             </tbody>
+            <tfoot>
+            <tr>
+                <th class="filter">Пол</th>
+                <th></th>
+                <th nowrap></th>
+                <th class="filter" nowrap>Код МКБ-10</th>
+                <th></th>
+                <th nowrap></th>
+                <th class="filter">Должность</th>
+                <th></th>
+                <th class="filter" nowrap>Стандарт помощи</th>
+                <th class="filter">Статус</th>
+            </tr>
+            </tfoot>
         </table>
 
         @foreach($response as $responseData)
@@ -112,7 +125,7 @@
                                 <td class="fw-bold">{{ $referral['name'] }}</td>
                                 <td>
                                     <table class="table table-striped table-sm" style="width: 100%">
-                                    <tr><td>Присутствует в стандартах:</td><td>{{ $referral['isPresentsInStandards'] ? 'Да' : 'Нет' }}</td></tr>
+                                    <tr class="{{ $referral['isPresentsInStandards'] ? 'bg-success' : 'bg-danger' }}"><td style="width: 200px">Присутствует в стандартах:</td><td>{{ $referral['isPresentsInStandards'] ? 'Да' : 'Нет' }}</td></tr>
                                         @if($referral['isPresentsInStandards'])
                                     <tr><td>Тип стандарта: </td><td>{{ $referral['associatedStandard'] }}</td></tr>
                                     <tr><td>Наименование стандарта:</td><td> {{ $referral['associatedStandardsName'] }}</td></tr>
@@ -132,10 +145,12 @@
 
         <script>
             $(document).ready(function () {
+
+
+
                 var table = $('#example').DataTable({
-                    // "columnDefs": [
-                    //     { "visible": false, "targets": [0, 9] }
-                    // ],
+                    dom: "<'row mb-3'<'col-3'l><'col-6'f><'col-3 text-end'B>>tip",
+                    //lfrBtip
                     scrollX: true,
                     "language": {
                         "lengthMenu": "Показывать _MENU_ записей",
@@ -150,8 +165,6 @@
                         "info": "Показ _START_ по _END_ из _TOTAL_ записей",
                         "infoEmpty": "",
                     },
-                    //scrollX: true,
-                    dom: 'Bfrtip',
                     buttons: [
                         {
                             extend: 'colvis',
@@ -192,8 +205,9 @@
                             .columns()
                             .every(function () {
                                 var column = this;
+
                                 var select = $('<br><select class="filter-data"><option value=""></option></select>')
-                                    .appendTo($(column.header()))
+                                    .appendTo($(column.footer()).filter('.filter'))
                                     .on('change', function () {
                                         var val = $.fn.dataTable.util.escapeRegex($(this).val());
 

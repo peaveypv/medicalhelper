@@ -1,6 +1,4 @@
-.dt-buttons {
-    margin-bottom: 30px;
-}
+
 
 .filter-data {
     width: 100%;
@@ -42,4 +40,24 @@
 .bg-danger {
     background: #ffc09f !important;
     box-shadow: none !important;
+}
+
+.bi {
+    width: 1em;
+    height: 1em;
+}
+
+.bi {
+    display: inline-block;
+    vertical-align: -0.125em;
+    fill: currentcolor;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: center !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    width: 300px !important;
+    background-color: white !important;
 }

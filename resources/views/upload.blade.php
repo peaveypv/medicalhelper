@@ -10,12 +10,22 @@
 
                 <div class="d-flex justify-content-center align-items-end gap-3">
                     <div class="">
-                        <label for="formFileMultiple" class="form-label">Загрузка данных для анализа</label>
-                        <input class="form-control" type="file" name="file" id="formFileMultiple" required>
+                        <label for="formFileMultiple" class="form-label fw-bold">Загрузка данных для анализа</label>
+                        <input class="form-control" type="file" name="file" id="formFileMultiple" accept=".xls,.xlsx" required>
                     </div>
                     <div class="">
                         <button class="btn btn-primary" type="submit">Загрузить</button>
                     </div>
+                </div>
+                <div class="mt-3">
+                    <ul>
+                        <li>Допустимый формат файлов для загрузки - *.xls | *.xlsx</li>
+                        <li>За один раз можно загрузить только 1 файл</li>
+                        <li>Загружаемый пользователем файл должен обязательно содержать в первой строке следующие поля:
+                            "пол пациента",  "дата рождения пациента",  "id пациента",  "код мкб-10",  "диагноз",  "дата оказания услуги",  "должность",  "назначения"</li>
+                        <li>Считывается только первый лист в Excel документе</li>
+                    </ul>
+
                 </div>
             </form>
             <br>

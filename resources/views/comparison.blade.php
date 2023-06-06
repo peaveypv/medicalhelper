@@ -10,7 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
         <script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/date-1.4.1/fc-4.2.2/fh-3.3.2/r-2.4.1/rg-1.3.1/rr-1.3.3/sc-2.1.1/sb-1.4.2/sp-2.1.2/sl-1.6.2/datatables.min.js"></script>
 
-        <table id="example" class="table table-striped" style="width:100%">
+        <table id="example" class="table table-striped pt-5" style="width:100%">
             <thead>
             <tr>
                 <th nowrap>Название</th>
@@ -58,7 +58,7 @@
                             "infoEmpty": "",
                         },
                         //scrollX: true,
-                        dom: 'Bfrtip',
+                        dom: "<'row mb-3'<'col-3'l><'col-6'f><'col-3 text-end'B>>tip",
                         buttons: [
 
 
