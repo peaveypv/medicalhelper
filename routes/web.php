@@ -26,6 +26,11 @@ Route::get('/analysis', [App\Http\Controllers\AnalysisController::class, 'index'
 Route::post('/analysis', [App\Http\Controllers\AnalysisController::class, 'store'])->name('analysis.store');
 
 Route::get('/comparison', [App\Http\Controllers\ComparisonController::class, 'index'])->name('comparison.index');
+Route::get('/comparison/{serviceId}/edit', [App\Http\Controllers\ComparisonController::class, 'edit'])->name('comparison.edit');
+Route::patch('/comparison/{serviceId}', [App\Http\Controllers\ComparisonController::class, 'update'])->name('comparison.update');
+
+
+
 Route::get('/batchAssignments', [App\Http\Controllers\BatchAssignmentsController::class, 'index'])->name('batchAssignments.index');
 Route::get('/generalStandards', [App\Http\Controllers\GeneralStandardsController::class, 'index'])->name('generalStandards.index');
 

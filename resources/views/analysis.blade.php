@@ -176,25 +176,25 @@
                         {
                             extend: 'pdfHtml5',
                             //text: 'Save current page',
-                            exportOptions: {
-                                columns: ':visible',
-                            },
+                            // exportOptions: {
+                            //     columns: ':visible',
+                            // },
                             header: false
                         },
                         {
                             extend: 'excelHtml5',
                             //text: 'Save current page',
-                            exportOptions: {
-                                columns: ':visible',
-                            },
+                            // exportOptions: {
+                            //     columns: ':visible',
+                            // },
                             header: false
                         },
                         {
                             extend: 'print',
                             text: 'Печать',
-                            exportOptions: {
-                                columns: ':visible',
-                            },
+                            // exportOptions: {
+                            //     columns: ':visible',
+                            // },
                             header: false
                         },
 
