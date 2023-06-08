@@ -104,9 +104,10 @@ class ComparisonController extends Controller
             "id" => $id,
             "name" => "",
             "createDate" => $current,
-            "batchAppointmentsServices" => explode(',' ,$params['appointmentsServices']),
-            "generalStandardsServices" =>  explode(',' ,$params['standardsServices'])
+            "batchAppointmentsServices" => $params['appointmentsServices'] ? explode(',' ,$params['appointmentsServices']) : [],
+            "generalStandardsServices" =>  $params['standardsServices'] ? explode(',' ,$params['standardsServices']) : []
         ]);
+
 
         return redirect()->route('comparison.index');
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use function Termwind\ValueObjects\my;
 
 class GeneralStandardsController extends Controller
 {
@@ -17,24 +18,24 @@ class GeneralStandardsController extends Controller
         ini_set('max_execution_time', self::CONNECTION_TIME_OUT);
     }
 
-    public function index()
+    public function index($id = 1)
     {
-        $response = Cache::remember('generalStandards', self::SCHEDULER_CACHE_TIME, function () {
-            $response = Http::connectTimeout(self::CONNECTION_TIME_OUT)->timeout(self::CONNECTION_TIME_OUT)->withHeaders(['XApiKey' => env('API_KEY')])->get(env('API_URL').'/GetGeneralStandards');
-            if ($response->ok()) {
-                $responseArray = $response->json();
-                return $responseArray;
+        $response = Http::connectTimeout(self::CONNECTION_TIME_OUT)->timeout(self::CONNECTION_TIME_OUT)->withHeaders(['XApiKey' => env('API_KEY')])->get(env('API_URL').'/GetGeneralStandards', [
+            'pageNumber' => $id,
+            'pageSize' => 10
+        ]);
+
+        if ($response->ok()) {
+            $response = $response->json();
+
+            if($response) {
+                $data = compact('response');
+                return view('generalStandards', $data);
             }
-        });
-        if($response) {
-            $data = compact('response');
-            return view('generalStandards', $data);
-        }
-        else {
-            return view('generalStandards');
-        }
 
-
+        }
+        return view('generalStandards');
     }
+
 
 }

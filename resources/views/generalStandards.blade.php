@@ -4,7 +4,7 @@
 <div class="container">
     <div class="accordion">
         @isset($response)
-        @foreach($response as $standard)
+        @foreach($response['list'] as $standard)
         <div class="mb-5 ">
             <div class="fs-4 standard-name d-flex" data-bs-toggle="collapse" data-bs-target="#standart_{{md5($standard['name'])}}">
                 <div>{{ $standard['name'] }}</div>

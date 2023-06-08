@@ -32,7 +32,11 @@ Route::patch('/comparison/{serviceId}', [App\Http\Controllers\ComparisonControll
 
 
 Route::get('/batchAssignments', [App\Http\Controllers\BatchAssignmentsController::class, 'index'])->name('batchAssignments.index');
+
 Route::get('/generalStandards', [App\Http\Controllers\GeneralStandardsController::class, 'index'])->name('generalStandards.index');
+Route::get('/generalStandards/{page}', [App\Http\Controllers\GeneralStandardsController::class, 'index'])->name('generalStandards.indexPage');
+
+
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
 Route::post('/dashboard', [App\Http\Controllers\DashboardController::class, 'store'])->name('dashboard.store');
