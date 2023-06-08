@@ -117,7 +117,7 @@
                                     <tr><td>Тип стандарта: </td><td>{{ $referral['associatedStandard'] }}</td></tr>
                                     <tr><td>Наименование стандарта:</td><td> {{ $referral['associatedStandardsName'] }}</td></tr>
                                     <tr><td>Наименование услуги из стандарта:</td><td>{{ $referral['associatedServiceName'] }}</td></tr>
-                                    <tr><td>Обязательная услуга: </td><td>{{ $referral['isServiceNecessary'] ? 'Да' : 'Нет' }}</td></tr>@endif
+                                    <tr class="{{ $referral['isServiceNecessary'] ? 'bg-success' : 'bg-secondary-subtle' }}"><td>Обязательная услуга: </td><td>{{ $referral['isServiceNecessary'] ? 'Да' : 'Нет' }}</td></tr>@endif
                                     </table>
                                 </td>
                             </tr>
