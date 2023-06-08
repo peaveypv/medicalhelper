@@ -11,6 +11,7 @@ class GeneralStandardsController extends Controller
 {
     public const SCHEDULER_CACHE_TIME = 300;
     public const CONNECTION_TIME_OUT = 180;
+    public const PAGE_SIZE = 10;
 
     public function __construct()
     {
@@ -20,21 +21,27 @@ class GeneralStandardsController extends Controller
 
     public function index($id = 1)
     {
-        $response = Http::connectTimeout(self::CONNECTION_TIME_OUT)->timeout(self::CONNECTION_TIME_OUT)->withHeaders(['XApiKey' => env('API_KEY')])->get(env('API_URL').'/GetGeneralStandards', [
-            'pageNumber' => $id,
-            'pageSize' => 10
-        ]);
 
-        if ($response->ok()) {
-            $response = $response->json();
+        $response = Cache::remember("generalStandards_$id", self::SCHEDULER_CACHE_TIME, function () use ($id) {
+            $response = Http::connectTimeout(self::CONNECTION_TIME_OUT)->timeout(self::CONNECTION_TIME_OUT)->withHeaders(['XApiKey' => env('API_KEY')])->get(env('API_URL').'/GetGeneralStandards', [
+                'pageNumber' => $id,
+                'pageSize' => self::PAGE_SIZE
+            ]);
 
-            if($response) {
-                $data = compact('response');
-                return view('generalStandards', $data);
+            if ($response->ok()) {
+                $responseArray = $response->json();
+                return $responseArray;
             }
+        });
 
+        if($response) {
+            $pageCount = (int) ceil($response['totalItems'] / self::PAGE_SIZE);
+            $data = compact('response', 'pageCount', 'id');
+            return view('generalStandards', $data);
         }
-        return view('generalStandards');
+        else {
+            return view('generalStandards');
+        }
     }
 
 
