@@ -11,14 +11,14 @@
                 Дата начала
             </div>
             <div>
-            <input class="form-control" type="date" name="dateBegin"
+            <input value="{{ date('Y-m-01') }}" class="form-control" type="date" name="dateBegin"
                    @isset($params)value="{{ $params['dateBegin'] }}" @endisset id="dateBegin" required>
             </div>
             <div class="text-nowrap">
                 Дата окончания
             </div>
             <div>
-                <input class="form-control" type="date" name="dateEnd"
+                <input value="{{ date('Y-m-d') }}" class="form-control" type="date" name="dateEnd"
                    @isset($params)value="{{ $params['dateEnd'] }}" @endisset id="dateEnd" required>
             </div>
 
@@ -26,7 +26,7 @@
             <select class="form-select" aria-label="" name="mkbCode">
                 <option value="">Выберите диагноз</option>
                 @foreach($diseaseCodes as $code)
-                <option value="{{ $code['mkb']  }}" @if(isset($params) && $code['mkb'] == $params['mkbCode']) selected @endif>{{ $code['diagnosis'] }}</option>
+                <option value="{{ $code['mkb']  }}" @if(isset($params) && $code['mkb'] == $params['mkbCode']) selected @endif>{{ $code['mkb']  }} - {{ $code['diagnosis'] }}</option>
                 @endforeach
             </select>
             </div>

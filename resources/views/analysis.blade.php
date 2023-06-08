@@ -12,7 +12,7 @@
                     </div>
 
                     <div>
-                        <input class="form-control" type="date" name="dateBegin"
+                        <input value="{{ date('Y-m-01') }}" class="form-control" type="date" name="dateBegin"
                                @isset($params)value="{{ $params['dateBegin'] }}" @endisset id="dateBegin" required>
                     </div>
 
@@ -20,7 +20,7 @@
                         <label for="dateEnd" class="form-label">Дата окончания</label>
                     </div>
                     <div>
-                        <input class="form-control" type="date" name="dateEnd"
+                        <input value="{{ date('Y-m-d') }}" class="form-control" type="date" name="dateEnd"
                                @isset($params)value="{{ $params['dateEnd'] }}" @endisset id="dateEnd" required>
                     </div>
                     <div>
@@ -50,16 +50,16 @@
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
-                <th>Пол</th>
-                <th nowrap="">Дата рождения</th>
-                <th nowrap>ID пациента</th>
-                <th nowrap>Код МКБ-10</th>
-                <th>Диагноз</th>
-                <th nowrap>Дата оказания услуги</th>
-                <th>Должность</th>
-                <th>Назначения</th>
-                <th nowrap>Стандарт помощи</th>
-                <th>Статус</th>
+                <th class="filter">Пол</th>
+                <th nowrap="" valign="top">Дата рождения</th>
+                <th nowrap valign="top">ID пациента</th>
+                <th class="filter" nowrap>Код МКБ-10</th>
+                <th valign="top">Диагноз</th>
+                <th nowrap valign="top">Дата оказания услуги</th>
+                <th class="filter">Должность</th>
+                <th valign="top">Назначения</th>
+                <th class="filter" nowrap>Стандарт помощи</th>
+                <th class="filter">Статус</th>
             </tr>
             </thead>
 
@@ -92,20 +92,7 @@
 
 
             </tbody>
-            <tfoot>
-            <tr>
-                <th class="filter">Пол</th>
-                <th></th>
-                <th nowrap></th>
-                <th class="filter" nowrap>Код МКБ-10</th>
-                <th></th>
-                <th nowrap></th>
-                <th class="filter">Должность</th>
-                <th></th>
-                <th class="filter" nowrap>Стандарт помощи</th>
-                <th class="filter">Статус</th>
-            </tr>
-            </tfoot>
+
         </table>
 
         @foreach($response as $responseData)
@@ -149,7 +136,7 @@
 
 
                 var table = $('#example').DataTable({
-                    dom: "<'row mb-3'<'col-3'l><'col-6'f><'col-3 text-end'B>>tip",
+                    dom: "<'row mb-3'<'col-3'l><'col-6'f><'col-3 text-end'B>>t<'row pt-4'<'col-6'i><'col-6'p>>",
                     //lfrBtip
                     scrollX: true,
                     "language": {
@@ -207,7 +194,7 @@
                                 var column = this;
 
                                 var select = $('<br><select class="filter-data"><option value=""></option></select>')
-                                    .appendTo($(column.footer()).filter('.filter'))
+                                    .appendTo($(column.header()).filter('.filter'))
                                     .on('change', function () {
                                         var val = $.fn.dataTable.util.escapeRegex($(this).val());
 

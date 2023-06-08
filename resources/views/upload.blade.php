@@ -65,6 +65,11 @@
                             @endforeach
                         </div>
                         @endif()
+                        <div class="d-flex gap-2">
+                            <div>Добавлено новых услуг: {{ $responseData['newServicesCreated'] }}</div>
+                            @if($responseData['newServicesCreated'] > 0)<a target="_blank" href="{{ route('comparison.index') }}">Перейти в сопоставление услуг</a>@endif
+                        </div>
+
 
                     </li>
                 </ul>

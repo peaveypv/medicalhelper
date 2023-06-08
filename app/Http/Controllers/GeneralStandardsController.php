@@ -9,7 +9,7 @@ use function Termwind\ValueObjects\my;
 
 class GeneralStandardsController extends Controller
 {
-    public const SCHEDULER_CACHE_TIME = 300;
+    public const SCHEDULER_CACHE_TIME = 3600;
     public const CONNECTION_TIME_OUT = 180;
     public const PAGE_SIZE = 10;
 
