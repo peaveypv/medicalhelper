@@ -136,7 +136,7 @@
 
 
                 var table = $('#example').DataTable({
-                    dom: "<'row mb-3'<'col-3'l><'col-6'f><'col-3 text-end'B>>t<'row pt-4'<'col-6'i><'col-6'p>>",
+                    dom: "<'row mb-3'<'col-3'l><'col-5'f><'col-4 text-end'B>>t<'row pt-4'<'col-6'i><'col-6'p>>",
                     //lfrBtip
                     scrollX: true,
                     "language": {
