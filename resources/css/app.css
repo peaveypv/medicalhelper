@@ -47,6 +47,41 @@
     box-shadow: none !important;
 }
 
+.bg-dark-subtle {
+    background: #e8eaee !important;
+}
+
+.bg-body-tertiary {
+    background: #e8eaee;
+}
+
+.text-primary-emphasis {
+    color: #0a7588;
+}
+
+.text-danger-emphasis {
+    color: #c65911;
+}
+
+.text-success-emphasis {
+    color: #63ab9c;
+}
+
+
+.border-end.border-dark-subtle{
+    border-right: 1px solid #0a7588 !important;
+}
+.border-bottom.border-dark-subtle{
+    border-bottom: 1px solid #0a7588 !important;
+}
+.border-top.border-dark-subtle{
+    border-top: 1px solid #0a7588 !important;
+}
+.border-start.border-dark-subtle{
+    border-left: 1px solid #0a7588 !important;
+}
+
+
 .bi {
     width: 1em;
     height: 1em;
@@ -65,4 +100,16 @@ div.dataTables_wrapper div.dataTables_filter {
 div.dataTables_wrapper div.dataTables_filter input {
     width: 300px !important;
     background-color: white !important;
+}
+
+.gap-7 {
+    gap: 5rem
+}
+
+.graph, .graphTreatments, .graphReferrals {
+    height: 300px;
+}
+
+.color-block {
+    width: 10px;height: 10px; display: inline-block
 }

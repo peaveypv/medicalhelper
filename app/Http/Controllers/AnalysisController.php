@@ -14,8 +14,8 @@ class AnalysisController extends Controller
 
     public function index()
     {
-
-        return view('analysis');
+        $params = null;
+        return view('analysis', compact('params'));
     }
 
     public function store(Request $request)

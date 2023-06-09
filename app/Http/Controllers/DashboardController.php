@@ -31,9 +31,9 @@ class DashboardController extends Controller
             $doctorPositions = $positions->json();
         }
 
+        $params = null;
 
-
-        return view('dashboard', compact(['diseaseCodes', 'doctorPositions']));
+        return view('dashboard', compact(['diseaseCodes', 'doctorPositions', 'params']));
     }
 
     public function store(Request $request)
@@ -70,6 +70,7 @@ class DashboardController extends Controller
             }
 
             $data = compact('response','params', 'diseaseCodes', 'doctorPositions');
+
             return view('dashboard', $data);
         } else {
             return back()->withErrors(['msg' => $response->body()]);

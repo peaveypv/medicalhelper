@@ -12,16 +12,16 @@
                     </div>
 
                     <div>
-                        <input value="{{ date('Y-m-01') }}" class="form-control" type="date" name="dateBegin"
-                               @isset($params)value="{{ $params['dateBegin'] }}" @endisset id="dateBegin" required>
+                        <input  class="form-control" type="date" name="dateBegin"
+                                @if($params) value="{{ $params['dateBegin'] }}" @else value="{{ date('Y-m-01') }}" @endif id="dateBegin" required>
                     </div>
 
                     <div>
                         <label for="dateEnd" class="form-label">Дата окончания</label>
                     </div>
                     <div>
-                        <input value="{{ date('Y-m-d') }}" class="form-control" type="date" name="dateEnd"
-                               @isset($params)value="{{ $params['dateEnd'] }}" @endisset id="dateEnd" required>
+                        <input  class="form-control" type="date" name="dateEnd"
+                               @if($params) value="{{ $params['dateEnd'] }}" @else value="{{ date('Y-m-d') }}" @endif id="dateEnd" required>
                     </div>
                     <div>
                         <button class="btn btn-primary" type="submit">Показать</button>
