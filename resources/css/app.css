@@ -113,3 +113,9 @@ div.dataTables_wrapper div.dataTables_filter input {
 .color-block {
     width: 10px;height: 10px; display: inline-block
 }
+
+
+.graph-container {
+    box-shadow: 1px 2px 4px rgba(0, 71, 187, 0.15), 0px 0px 15px rgba(0, 71, 187, 0.1);
+    border-radius: 10px;
+}

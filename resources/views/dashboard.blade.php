@@ -82,10 +82,10 @@
     </style>
     <script src="https://d3js.org/d3.v3.min.js"></script>
 
-    <div class="graphs-container d-flex mt-4 gap-7 p-4 bg-dark-subtle">
+    <div class="graphs-container d-flex mt-4 gap-7 p-4 ">
         <div class="">
             <div class="text-primary-emphasis fs-2 fw-bold">ПРИЕМЫ</div>
-            <div class="bg-white text-primary-emphasis p-3">
+            <div class="bg-white text-primary-emphasis p-3 graph-container">
                 <div class="container">
                     <div class="row">
                         Количество
@@ -160,11 +160,11 @@
                         </div>
                         <div class = "col-5 justify-content-center">
                             <div class="bg-light p-2 align-middle text-black">
-                                <div><div class="color-block bg-success"></div> Все назначения соответствуют стандартам</div>
-                                <div><div class="color-block bg-info"></div> Назначения частично соответствуют</div>
-                                <div><div class="color-block bg-danger"></div> Все назначения не соответствуют</div>
-                                <div><div class="color-block" style="background:#ffc000 "></div> Нет назначений</div>
-                                <div><div class="color-block bg-body-tertiary"></div> Нет стандарта</div>
+                                <div><div class="color-block bg-success"></div> a: Все назначения соответствуют стандартам</div>
+                                <div><div class="color-block bg-info"></div> b:  Назначения частично соответствуют</div>
+                                <div><div class="color-block bg-danger"></div> c: Все назначения не соответствуют</div>
+                                <div><div class="color-block" style="background:#ffc000 "></div> d: Нет назначений</div>
+                                <div><div class="color-block bg-body-tertiary"></div> e: Нет стандарта</div>
                             </div>
                         </div>
                     </div>
@@ -212,26 +212,32 @@
                 };
 
                 var color = d3.scale.ordinal()
-                    .domain([])
+                    .domain([
+                        'a: '+{{ $response['treatmentsStatusAllInStandards'] }}+'; '+{{ round(($response['treatmentsStatusAllInStandardsPercent'] * 100), 1) }}+'%'],
+                'b: '+{{ $response['treatmentsStatusPartlyInStandards'] }}+'; '+{{ round(($response['treatmentsStatusPartlyInStandardsPercent'] * 100), 1) }}+'%',
+                'c: '+{{ $response['treatmentsStatusNoneInStandards'] }}+'; '+{{ round(($response['treatmentsStatusNoneInStandardsPercent'] * 100), 1) }}+'%',
+                'd: '+{{ $response['treatmentsStatusHasNoReferrals'] }}+'; '+{{ round(($response['treatmentsStatusHasNoReferralsPercent'] * 100), 1) }}+'%',
+                'e: '+{{ $response['treatmentsWithoutStandardsCount'] }}+'; '+{{ round(($response['treatmentsWithoutStandardsPercent'] * 100), 1) }}+'%',
+                )
                     .range(["#adf7b6", "#ffee93", "#ffc09f", "#ffc000", "#e8eaee"]);
 
 
                 var labels = [
                     {
-                        label: {{ $response['treatmentsStatusAllInStandards'] }}+'; '+{{ round(($response['treatmentsStatusAllInStandardsPercent'] * 100), 1) }}+'%',
+                        label: 'a: '+{{ $response['treatmentsStatusAllInStandards'] }}+'; '+{{ round(($response['treatmentsStatusAllInStandardsPercent'] * 100), 1) }}+'%',
                         value: {{ $response['treatmentsStatusAllInStandards'] }},
                     }, {
-                        label: {{ $response['treatmentsStatusPartlyInStandards'] }}+'; '+{{ round(($response['treatmentsStatusPartlyInStandardsPercent'] * 100), 1) }}+'%',
+                        label: 'b: '+{{ $response['treatmentsStatusPartlyInStandards'] }}+'; '+{{ round(($response['treatmentsStatusPartlyInStandardsPercent'] * 100), 1) }}+'%',
                         value: {{ $response['treatmentsStatusPartlyInStandards'] }},
                     }, {
-                        label: {{ $response['treatmentsStatusNoneInStandards'] }}+'; '+{{ round(($response['treatmentsStatusNoneInStandardsPercent'] * 100), 1) }}+'%',
+                        label: 'c: '+{{ $response['treatmentsStatusNoneInStandards'] }}+'; '+{{ round(($response['treatmentsStatusNoneInStandardsPercent'] * 100), 1) }}+'%',
                         value: {{ $response['treatmentsStatusNoneInStandards'] }},
                     }, {
-                        label: {{ $response['treatmentsStatusHasNoReferrals'] }}+'; '+{{ round(($response['treatmentsStatusHasNoReferralsPercent'] * 100), 1) }}+'%',
+                        label: 'd: '+{{ $response['treatmentsStatusHasNoReferrals'] }}+'; '+{{ round(($response['treatmentsStatusHasNoReferralsPercent'] * 100), 1) }}+'%',
                         value: {{ $response['treatmentsStatusHasNoReferrals'] }},
                     }
                     , {
-                        label: {{ $response['treatmentsWithoutStandardsCount'] }}+'; '+{{ round(($response['treatmentsWithoutStandardsPercent'] * 100), 1) }}+'%',
+                        label: 'e: '+{{ $response['treatmentsWithoutStandardsCount'] }}+'; '+{{ round(($response['treatmentsWithoutStandardsPercent'] * 100), 1) }}+'%',
                         value: {{ $response['treatmentsWithoutStandardsCount'] }},
                     }
                 ];
@@ -338,7 +344,7 @@
         </div>
         <div class="">
             <div class="text-primary-emphasis fs-2 fw-bold text-danger-emphasis">НАЗНАЧЕНИЯ</div>
-            <div class="container bg-white text-primary-emphasis p-3">
+            <div class="container bg-white text-primary-emphasis p-3 graph-container">
                 <div class="container">
                     <div class="row">
                         Количество
@@ -465,23 +471,28 @@
                 };
 
                 var color = d3.scale.ordinal()
-                    .domain([])
+                    .domain([
+                        'a: ' +{{ $response['referralsHasComparedNecessary'] }}+'; '+{{ round(($response['referralsHasComparedNecessaryPercent'] * 100), 1) }}+'%',
+                        'b: ' +{{ $response['referralsHasComparedOptional'] }}+'; '+{{ round(($response['referralsHasComparedOptionalPercent'] * 100), 1) }}+'%',
+                        'c: ' +{{ $response['referralsOutsideStandards'] }}+'; '+{{ round(($response['referralsOutsideStandardsPercent'] * 100), 1) }}+'%',
+                'd: ' +{{ $response['referralsCountWithoutStandards'] }}+'; '+{{ round(($response['referralsPercentWithoutStandards'] * 100), 1) }}+'%',
+                ])
                     .range(["#adf7b6", "#BFCEE7", "#ffc09f", "#e8eaee"]);
 
 
                 var labels = [
                     {
-                        label: {{ $response['referralsHasComparedNecessary'] }}+'; '+{{ round(($response['referralsHasComparedNecessaryPercent'] * 100), 1) }}+'%',
+                        label: 'a: ' +{{ $response['referralsHasComparedNecessary'] }}+'; '+{{ round(($response['referralsHasComparedNecessaryPercent'] * 100), 1) }}+'%',
                     value: {{ $response['referralsHasComparedNecessary'] }},
                 }, {
-                    label: {{ $response['referralsHasComparedOptional'] }}+'; '+{{ round(($response['referralsHasComparedOptionalPercent'] * 100), 1) }}+'%',
+                    label: 'b: ' +{{ $response['referralsHasComparedOptional'] }}+'; '+{{ round(($response['referralsHasComparedOptionalPercent'] * 100), 1) }}+'%',
                         value: {{ $response['referralsHasComparedOptional'] }},
                 }, {
-                    label: {{ $response['referralsOutsideStandards'] }}+'; '+{{ round(($response['referralsOutsideStandardsPercent'] * 100), 1) }}+'%',
+                    label: 'c: ' +{{ $response['referralsOutsideStandards'] }}+'; '+{{ round(($response['referralsOutsideStandardsPercent'] * 100), 1) }}+'%',
                         value: {{ $response['referralsOutsideStandards'] }},
                 }
                 , {
-                    label: {{ $response['referralsCountWithoutStandards'] }}+'; '+{{ round(($response['referralsPercentWithoutStandards'] * 100), 1) }}+'%',
+                    label: 'd: ' +{{ $response['referralsCountWithoutStandards'] }}+'; '+{{ round(($response['referralsPercentWithoutStandards'] * 100), 1) }}+'%',
                         value: {{ $response['referralsCountWithoutStandards'] }},
                 }
                 ];
