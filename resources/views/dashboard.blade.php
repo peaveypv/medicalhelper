@@ -90,7 +90,7 @@
                     <div class="row">
                         Количество
                     </div>
-                    <div class="row justify-content-center fs-1 fw-bold">
+                    <div class="row justify-content-center fw-bold" style="font-size: 50px">
                         {{ $response['totalTreatmentsCount'] }}
                     </div>
                     <div class="row justify-content-center border-bottom border-dark-subtle">
@@ -98,7 +98,7 @@
                     </div>
                     <div class="row">
                         <div class="col-10 text-center border-end border-dark-subtle">
-                            <div class="fs-2 fw-bold">{{ $response['treatmentsWithStandardsCount'] }}
+                            <div class=" fw-bold" style="font-size: 40px">{{ $response['treatmentsWithStandardsCount'] }}
                                 <span class="fs-5 text-success-emphasis">{{ round(($response['treatmentsWithStandardsPercent'] * 100), 1) }}%</span>
                             </div>
                             <div>Есть стандарт оказания помощи</div>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="col-2 text-center p-2">
                             <div class="bg-body-tertiary h-100">
-                                <div class="fs-2 fw-bold">{{ $response['treatmentsWithoutStandardsCount'] }}
+                                <div class=" fw-bold" style="font-size: 40px">{{ $response['treatmentsWithoutStandardsCount'] }}
                                     <span class="fs-5 text-success-emphasis">{{ round(($response['treatmentsWithoutStandardsPercent'] * 100), 1) }}%</span>
                                 </div>
                                 <div>Нет стандарта</div>
@@ -187,7 +187,7 @@
                 svg.append("g")
                     .attr("class", "lines");
 
-                var width = 400,
+                var width = 420,
                     height = 250,
                     radius = Math.min(width, height) / 2;
 
@@ -349,7 +349,7 @@
                     <div class="row">
                         Количество
                     </div>
-                    <div class="row justify-content-center fs-1 fw-bold text-danger-emphasis">
+                    <div class="row justify-content-center fw-bold text-danger-emphasis" style="font-size: 50px">
                         {{ $response['totalReferralsCount'] }}
                     </div>
                     <div class="row justify-content-center border-bottom border-dark-subtle">
@@ -357,7 +357,7 @@
                     </div>
                     <div class="row">
                         <div class="col-10 text-center border-end border-dark-subtle">
-                            <div class="fs-2 fw-bold text-danger-emphasis">{{ $response['referralsCountWithStandards']
+                            <div class=" fw-bold text-danger-emphasis" style="font-size: 40px">{{ $response['referralsCountWithStandards']
                                 }}
                                 <span class="fs-5 text-success-emphasis">{{ round(($response['referralsPercentWithStandards'] * 100), 1) }}%</span>
 
@@ -402,7 +402,7 @@
                         </div>
                         <div class="col-2 text-center p-2">
                             <div class="bg-body-tertiary h-100">
-                                <div class="fs-2 fw-bold text-danger-emphasis">{{
+                                <div class=" fw-bold text-danger-emphasis" style="font-size: 40px">{{
                                     $response['referralsCountWithoutStandards'] }}
                                     <span class="fs-5 text-success-emphasis">{{ round(($response['referralsPercentWithoutStandards'] * 100), 1) }}%</span>
 
@@ -419,10 +419,10 @@
                         </div>
                         <div class = "col-5 justify-content-center">
                             <div class="bg-light p-2 align-middle text-black">
-                                <div><div class="color-block bg-success"></div> Назначения соответствуют стандарту, обязательные</div>
-                                <div><div class="color-block bg-secondary-subtle"></div> Назначения соответствуют стандарту, по показаниям</div>
-                                <div><div class="color-block bg-danger"></div> Назначения не соответствуют стандарту</div>
-                                <div><div style="color-block" class="color-block bg-body-tertiary"></div> Нет стандарта</div>
+                                <div><div class="color-block bg-success"></div> a: Назначения соответствуют стандарту, обязательные</div>
+                                <div><div class="color-block bg-secondary-subtle"></div> b: Назначения соответствуют стандарту, по показаниям</div>
+                                <div><div class="color-block bg-danger"></div> c: Назначения не соответствуют стандарту</div>
+                                <div><div style="color-block" class="color-block bg-body-tertiary"></div> d: Нет стандарта</div>
                             </div>
                         </div>
                     </div>
@@ -446,7 +446,7 @@
                 svg.append("g")
                     .attr("class", "lines");
 
-                var width = 400,
+                var width = 420,
                     height = 250,
                     radius = Math.min(width, height) / 2;
 
